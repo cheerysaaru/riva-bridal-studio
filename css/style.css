@@ -10,13 +10,13 @@
 }
 
 :root {
-    --ivory: #F7F3ED;
-    --beige: #E8DED2;
-    --gold: #B89B67;
-    --charcoal: #201D1A;
-    --white: #FFFFFF;
-    --gold-light: rgba(184, 155, 103, 0.15);
-    --gold-subtle: rgba(184, 155, 103, 0.08);
+    --ivory: #FAF6F1;
+    --beige: #F0E8DD;
+    --gold: #C9A96E;
+    --charcoal: #2C2420;
+    --white: #FFFDF9;
+    --gold-light: rgba(201, 169, 110, 0.15);
+    --gold-subtle: rgba(201, 169, 110, 0.08);
     --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
