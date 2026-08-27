@@ -123,7 +123,7 @@
         initSmoothScroll();
         initActiveNav();
         initHeroParticles();
-        initHeroParallax();
+        initHero3D();
     });
 
     // Hero Particles
@@ -131,7 +131,7 @@
         var heroParticles = document.getElementById('heroParticles');
         if (!heroParticles) return;
 
-        for (var i = 0; i < 25; i++) {
+        for (var i = 0; i < 20; i++) {
             var particle = document.createElement('div');
             particle.className = 'hero-particle';
             particle.style.left = Math.random() * 100 + '%';
@@ -141,16 +141,47 @@
         }
     }
 
-    // Hero Parallax
-    function initHeroParallax() {
-        var heroContent = document.querySelector('.hero-content');
-        if (!heroContent) return;
+    // Hero 3D Mouse Tracking
+    function initHero3D() {
+        var hero = document.getElementById('hero');
+        var imageWrapper = document.querySelector('.hero-image-wrapper');
+        if (!hero || !imageWrapper) return;
 
+        hero.addEventListener('mousemove', function (e) {
+            var rect = hero.getBoundingClientRect();
+            var x = (e.clientX - rect.left) / rect.width - 0.5;
+            var y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            var rotateX = y * 8;
+            var rotateY = -x * 8;
+            var translateZ = 20;
+
+            imageWrapper.style.transform = 
+                'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateZ(' + translateZ + 'px)';
+        });
+
+        hero.addEventListener('mouseleave', function () {
+            imageWrapper.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+            imageWrapper.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            setTimeout(function () {
+                imageWrapper.style.transition = '';
+            }, 800);
+        });
+
+        // Parallax on scroll
         window.addEventListener('scroll', function () {
             var scrolled = window.pageYOffset;
+            var heroContent = document.querySelector('.hero-content');
             if (scrolled < window.innerHeight) {
-                heroContent.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
-                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+                var parallaxY = scrolled * 0.4;
+                var imageScale = 1.1 - (scrolled * 0.0002);
+                imageWrapper.style.transform = 'translateY(' + parallaxY + 'px)';
+                imageWrapper.querySelector('.hero-3d-image').style.transform = 'scale(' + imageScale + ')';
+                
+                if (heroContent) {
+                    heroContent.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+                    heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+                }
             }
         }, { passive: true });
     }
