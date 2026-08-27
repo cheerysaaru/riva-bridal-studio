@@ -1,0 +1,329 @@
+/* ============================================
+   RIVAA BRIDAL STUDIO — Animations & Effects
+   ============================================ */
+
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-scale.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered children */
+.stagger-children .reveal:nth-child(1) { transition-delay: 0s; }
+.stagger-children .reveal:nth-child(2) { transition-delay: 0.08s; }
+.stagger-children .reveal:nth-child(3) { transition-delay: 0.16s; }
+.stagger-children .reveal:nth-child(4) { transition-delay: 0.24s; }
+.stagger-children .reveal:nth-child(5) { transition-delay: 0.32s; }
+.stagger-children .reveal:nth-child(6) { transition-delay: 0.4s; }
+
+/* Image Clip Reveal */
+.clip-reveal {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.clip-reveal.revealed {
+    clip-path: inset(0 0 0% 0);
+}
+
+/* Page Load Animation */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--charcoal);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.page-loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.page-loader .loader-text {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    animation: loaderPulse 1.2s ease-in-out;
+}
+
+@keyframes loaderPulse {
+    0% { opacity: 0; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.05); }
+}
+
+/* Hero Video Zoom */
+.hero-bg video {
+    animation: heroVideoZoom 30s ease-in-out infinite alternate;
+}
+
+@keyframes heroVideoZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+
+/* Hero Image Zoom */
+.hero-bg img,
+.page-hero-bg img,
+.cinematic-bg img,
+.final-cta-bg img {
+    animation: heroZoom 25s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.06); }
+}
+
+/* Hero Content — Always Visible, No Delays */
+.hero-content > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Page Hero Content */
+.page-hero-content > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Image Hover Effects */
+.editorial-gallery .gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.editorial-gallery .gallery-item:hover::after {
+    opacity: 0.08;
+}
+
+/* Service Row Hover Animation */
+.service-row {
+    transition: all 0.3s ease;
+}
+
+.service-row:hover {
+    background: rgba(184, 155, 103, 0.03);
+}
+
+/* Footer Link Underline */
+.footer-col ul li a {
+    position: relative;
+}
+
+.footer-col ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.footer-col ul li a:hover::after {
+    width: 100%;
+}
+
+/* Smooth page transitions */
+.page-transition {
+    animation: pageIn 0.5s ease forwards;
+}
+
+@keyframes pageIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Gallery item hover */
+.masonry-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(32, 29, 26, 0.3) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.masonry-item:hover::after {
+    opacity: 1;
+}
+
+/* Lightbox animations */
+.lightbox-image {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox.active .lightbox-image {
+    transform: scale(1);
+}
+
+/* Form input focus */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    box-shadow: 0 0 0 3px rgba(184, 155, 103, 0.1);
+}
+
+/* Mobile menu stagger */
+.mobile-nav a:nth-child(1) { transition-delay: 0.05s; }
+.mobile-nav a:nth-child(2) { transition-delay: 0.1s; }
+.mobile-nav a:nth-child(3) { transition-delay: 0.15s; }
+.mobile-nav a:nth-child(4) { transition-delay: 0.2s; }
+.mobile-nav a:nth-child(5) { transition-delay: 0.25s; }
+.mobile-nav .mobile-nav-cta { transition-delay: 0.3s; }
+
+/* Editorial Image Zoom on Hover */
+.editorial-image {
+    overflow: hidden;
+}
+
+.editorial-image img {
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.editorial-image:hover img {
+    transform: scale(1.04);
+}
+
+/* Gallery Image Scale */
+.masonry-item img {
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.masonry-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Why Item Hover */
+.why-item {
+    transition: transform 0.3s ease;
+}
+
+.why-item:hover {
+    transform: translateY(-4px);
+}
+
+/* Testimonial Card Hover */
+.testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 50px rgba(32, 29, 26, 0.08);
+}
+
+/* Social Link Hover */
+.footer-social a {
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    transform: translateY(-2px);
+}
+
+/* Hero Bottom Location */
+.hero-bottom {
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth Scroll Indicator */
+.hero-scroll-line {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Service Row Modern Hover */
+.service-row {
+    position: relative;
+}
+
+.service-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.service-row:hover::before {
+    width: 100%;
+}
