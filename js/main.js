@@ -122,6 +122,37 @@
         initScrollReveal();
         initSmoothScroll();
         initActiveNav();
+        initHeroParticles();
+        initHeroParallax();
     });
+
+    // Hero Particles
+    function initHeroParticles() {
+        var heroParticles = document.getElementById('heroParticles');
+        if (!heroParticles) return;
+
+        for (var i = 0; i < 25; i++) {
+            var particle = document.createElement('div');
+            particle.className = 'hero-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (4 + Math.random() * 4) + 's';
+            heroParticles.appendChild(particle);
+        }
+    }
+
+    // Hero Parallax
+    function initHeroParallax() {
+        var heroContent = document.querySelector('.hero-content');
+        if (!heroContent) return;
+
+        window.addEventListener('scroll', function () {
+            var scrolled = window.pageYOffset;
+            if (scrolled < window.innerHeight) {
+                heroContent.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+                heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        }, { passive: true });
+    }
 
 })();
