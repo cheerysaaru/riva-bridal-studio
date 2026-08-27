@@ -5,14 +5,14 @@
 /* Large Desktop (1440px+) */
 @media (min-width: 1441px) {
     .section {
-        padding: 8rem 6%;
+        padding: 6rem 6%;
     }
 }
 
 /* Desktop (1200px - 1440px) */
 @media (max-width: 1440px) {
     .section {
-        padding: 7rem 5%;
+        padding: 5rem 5%;
     }
 }
 
@@ -46,7 +46,7 @@
 /* Tablet (768px - 1023px) */
 @media (max-width: 1023px) {
     .section {
-        padding: 5rem 5%;
+        padding: 4rem 5%;
     }
 
     .nav-links {
@@ -154,7 +154,7 @@
     }
 
     .section {
-        padding: 4rem 6%;
+        padding: 3rem 6%;
     }
 
     .section-small {
@@ -456,7 +456,7 @@
     }
 
     .section {
-        padding: 3rem 5%;
+        padding: 2.5rem 5%;
     }
 
     .editorial-content .meta {
